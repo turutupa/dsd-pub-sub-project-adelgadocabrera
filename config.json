@@ -1,0 +1,39 @@
+{
+  "broker": {
+    "id": 0,
+    "brokerPort": 5000,
+    "zkPort": 5001
+  },
+  "leader": {
+    "id": 0,
+    "hostname": "localhost",
+    "port": 5000,
+    "zkPort": 5001
+  },
+  "producer": {
+    "id": 1001,
+    "hostname": "localhost",
+    "port": 5000,
+    "localPort": "1050",
+    "topics": [
+      "image"
+    ],
+    "keySerializer": "STRING",
+    "valueSerializer": "STRING"
+  },
+  "consumers": [
+    {
+      "id": 2001,
+      "hostname": "localhost",
+      "port": 5000,
+      "localPort": 1051,
+      "topics": [
+        "image"
+      ],
+      "keyDeserializer": "STRING",
+      "valueDeserializer": "STRING",
+      "pollMethodConsumer": "poll.consumer",
+      "timeout": 120
+    }
+  ]
+}

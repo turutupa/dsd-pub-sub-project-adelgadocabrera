@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+//from ProtocolBuffersExample directory compile this as follows:
+//protoc --java_out=src/main/java/ protos/studentinfo.proto
+
+option java_package = "protos";
+option java_outer_classname = "ZK";
+
+
+message Record {
+  string type = 1;
+  int32 hostId = 2;
+  string hostname = 3;
+  int32 zkPort = 4;
+  int32 brokerPort = 5;
+  int32 leader = 6;
+  MembershipTable membershipTable = 7;
+}
+
+message MembershipTable {
+  repeated Node nodes = 1;
+  repeated Node producers = 2;
+  repeated Node consumers = 3;
+}
+
+message Node {
+  int32 id = 1;
+  string hostname = 2;
+  int32 port = 3;
+  int32 zk_port = 4;
+  int32 broker_port = 5;
+  bool hasCrashed = 6;
+}

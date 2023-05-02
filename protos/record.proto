@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+//from ProtocolBuffersExample directory compile this as follows:
+//protoc --java_out=src/main/java/ protos/studentinfo.proto
+
+option java_package = "protos";
+option java_outer_classname = "Kafka";
+
+
+message Record {
+  string type = 1;
+  string topic = 2;
+  string key_type = 3;
+  string value_type = 4;
+  bytes key = 5;
+  bytes value = 6;
+  int64 timestamp = 7;
+  int32 offset = 8;
+  repeated Record records = 9;
+  int32 nodeId = 10;
+  enum Role {
+    BROKER = 0;
+    PRODUCER = 1;
+    CONSUMER = 2;
+  };
+  Role role = 11;
+  int32 port = 12;
+  int32 recordId = 13;
+}
